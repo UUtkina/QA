@@ -9,15 +9,17 @@ public class CreateNewAccountTestWS extends TestBaseWebShop {
 
     @BeforeMethod
     public void ensurePrecondition() {
-        if (isElementComponentPresent(By.cssSelector("[href='/register']"))) {
-            return; // If login link is present, no need to sign out.
-        }
-        if (isElementComponentPresent(By.cssSelector("body > div.master-wrapper-page > div.master-wrapper-content > div.header > div.header-links-wrapper > div.header-links > ul > li:nth-child(2) > a"))) {
-            driver.findElement(By.cssSelector("body > div.master-wrapper-page > div.master-wrapper-content > div.header > div.header-links-wrapper > div.header-links > ul > li:nth-child(2) > a")).click();
-        }
-        // Add else block if needed to handle cases where neither element is present.
-    }
 
+        if (isElementComponentPresent(By.cssSelector("[href='/register']"))) {
+            return;
+        } else {
+
+            By signOutSelector = By.cssSelector("body > div.master-wrapper-page > div.master-wrapper-content > div.header > div.header-links-wrapper > div.header-links > ul > li:nth-child(2) > a");
+            if (isElementComponentPresent(signOutSelector)) {
+                driver.findElement(signOutSelector).click();
+            }
+        }
+         }
     @Test
     public void createNewAccountPositiveTest() {
         driver.findElement(By.cssSelector("[href='/register']")).click();
@@ -55,6 +57,6 @@ public class CreateNewAccountTestWS extends TestBaseWebShop {
         System.out.println(driver.getPageSource()); // Or use logging
 
         // Assertion
-        Assert.assertTrue(isElementComponentPresent(By.cssSelector("body > div.master-wrapper-page > div.master-wrapper-content > div.header > div.header-links-wrapper > div.header-links > ul > li:nth-child(2) > a")), "Sign Out button should be visible after registration");
+        Assert.assertTrue(isElementComponentPresent(By.cssSelector("body > div.master-wrapper-page > div.master-wrapper-content > div.header > div.header-links-wrapper > div.header-links > ul > li:nth-child(2) > a")), "Log Out button should be visible after registration");
     }
 }

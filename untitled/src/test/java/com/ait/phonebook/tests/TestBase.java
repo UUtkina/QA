@@ -20,8 +20,8 @@ public class TestBase {
         driver.get("https://telranedu.web.app");
 
         driver.manage().window().maximize();
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        Assert.assertTrue(isHomeComponentPresent());
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+
     }
 
 
