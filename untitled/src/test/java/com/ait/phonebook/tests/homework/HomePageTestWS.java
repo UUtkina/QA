@@ -1,9 +1,9 @@
-package com.ait.phonebook.tests;
+package com.ait.phonebook.tests.homework;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class HomePageTest extends TestBase {
+public class HomePageTestWS extends TestBaseWebShop {
 
 
     @Test

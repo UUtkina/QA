@@ -1,4 +1,4 @@
-package com.ait.phonebook.tests;
+package com.ait.phonebook.tests.homework;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -37,5 +37,15 @@ public class TestBaseWebShop {
     @AfterMethod
     public void tearDown() {
         driver.quit();
+    }
+
+    public void type(By locator, String text) {
+        click(locator);
+        driver.findElement(locator).clear();
+        driver.findElement(locator).sendKeys(text);
+    }
+
+    public void click(By locftor) {
+        driver.findElement(locftor).click();
     }
 }
